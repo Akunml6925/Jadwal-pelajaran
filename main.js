@@ -70,7 +70,7 @@ export async function tambahAbsensi(tanggal, nis, nama, alamat, noTlpn, kelas, k
     console.log('berhasil menembah ' + dokRef.id);
   } catch (e) {
     console.log('gagal menambah ' + e);
-  }
+  } 
 }
 
 export async function hapusAbsensi(docId) {
