@@ -28,7 +28,7 @@
   </nav>
 
 
-  <table class="height: 100% min-height: 100vh" class="table" id="daftar-jadwalpelajaran">
+  <table class="height: 100% min-height: 100vh" class="table" id="jadwalpelajaran">
     <thead>
       <tr>
         <th scope="col">hari</th>
@@ -81,7 +81,8 @@
     import { ambilDaftarjadwalpelajaran, formatAngka, hapusjadwalpelajaran } from './main.js';
 
     $(document).ready(async function() {
-      let elemenDaftar = $("#jadwalpelajaran > tbody");
+      let
+      elemenDaftar = $("#jadwalpelajaran > tbody");
       let daftarjadwalpelajaran = await ambilDaftarjadwalpelajran();
       let nomor = 1;
 

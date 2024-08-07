@@ -86,7 +86,7 @@ export async function ubahjadwalpelajaran(docId,hari, jamke, waktu,kelas,matapel
   });
 }
 
-export async function ambilmatapelajaran(docId) {
+export async function ambiljadwalpelajaran(docId) {
   const docRef = await doc(db, "jadwalpelajaran", docId);
   const docSnap = await getDoc(docRef);
 
