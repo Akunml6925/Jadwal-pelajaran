@@ -1,25 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html>
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Absensi kelas</title>
+  <title>Form Absensi</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <link href="css/tooplate.css" rel="stylesheet">
-
 
 </head>
 
-<body class="d-flex flex-column h-100">
+<body class="m-3">
   <nav class="navbar navbar-expand-lg navbar-white bg-white">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">kelas</a>
+      <a class="navbar-brand" href="#">ABSENCE</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavWhiteDropdown" aria-controls="navbarNavWhiteDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -30,7 +27,7 @@
               Menu
             </button>
             <ul class="dropdown-menu dropdown-menu-white">
-              <li><a class="dropdown-item" href="forum-absensi.html">Tambah data</a></li>
+              <li><a class="dropdown-item" href="index.html">Lihat Data</a></li>
             </ul>
           </li>
         </ul>
@@ -38,130 +35,59 @@
     </div>
   </nav>
 
-
-  <table class="height: 100% min-height: 100vh" class="table" id="daftar-absensi">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Tanggal</th>
-        <th scope="col">NIS</th>
-        <th scope="col">Nama</th>
-        <th scope="col">Alamat</th>
-        <th scope="col">No.Tlpn</th>
-        <th scope="col">Kelas</th>
-        <th scope="col">Keterangan</th>
-        <th scope="col">Tombol</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-
-  <div class="d-flex justify-content-center">
-    <img src="loader.gif" style="width: 15em; display: block" id="loader">
-  </div>
-
-  <style>
-  
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-
-    th,
-    td {
-      padding: 10px;
-      border: 1px solid #ddd;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-    tr:hover {
-      background-color: #f5f5f5;
-    }
-
-    .stack-up {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-  </style>
+  <form class="mb-3">
+    <div class="mb-3">
+      <label class="form-label">Tanggal</label>
+      <input type="date" class="form-control" id="input-tanggal">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nis</label>
+      <input type="text" class="form-control" id="input-nis">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nama</label>
+      <input type="text" class="form-control" id="input-nama">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Alamat</label>
+      <input type="text" class="form-control" id="input-alamat">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">No.tlpn</label>
+      <input type="text" class="form-control" id="input-noTlpn">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Kelas</label>
+      <input type="text" class="form-control" id="input-kelas">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Keterangan</label>
+      <input type="text" class="form-control" id="input-keterangan">
+    </div>
+    <div class="d-flex justify-content-center">
+    <button type="submit" class="btn btn-primary" id="tombol-tambah">Simpan</button>
+    </div>
+  </form>
 
   <script type="module">
-    import { ambilDaftarAbsensi, formatAngka, hapusAbsensi } from './main.js';
+    import { tambahAbsensi } from './main.js';
 
-    $(document).ready(async function() {
-      let elemenDaftar = $("#daftar-absensi > tbody");
-      let daftarAbsensi = await ambilDaftarAbsensi();
-      let nomor = 1;
+    let tombolTambah = document.getElementById('tombol-tambah');
+    let elemenTanggal = document.getElementById('input-tanggal');
+    let elemenNis = document.getElementById('input-nis');
+    let elemenNama = document.getElementById('input-nama');
+    let elemenAlamat = document.getElementById('input-alamat');
+    let elemenNoTlpn = document.getElementById('input-noTlpn');
+    let elemenKelas = document.getElementById('input-kelas');
+    let elemenKeterangan = document.getElementById('input-keterangan')
 
-
-
-      daftarAbsensi.forEach((data) => {
-        elemenDaftar.append(
-          '<tr>' +
-          '<th>' + nomor + '</th>' +
-          '<td>' + data.tanggal + '</td>' +
-          '<td>' + data.nis + '</td>' +
-          '<td>' + data.nama + '</td>' +
-          '<td>' + data.alamat + '</td>' + '<td>' + data.noTlpn + '</td>' + '<td>' + data.kelas + '</td>' + '<td>' + data.keterangan + '</td>' +
-          '<td class="stack-up">' +
-          ' <a href="#" class="btn btn-warning link-ubah"  data="' +
-          data.id +
-          '">ubah</a> ' +
-          ' <button class="btn btn-danger tombol-hapus" data="' +
-          data.id +
-          '">Hapus</button>' + '</td>' +
-          '</tr>'
-        );
-        nomor = nomor + 1;
-      });
-
-      $('.tombol-hapus').click(async function() {
-        await hapusAbsensi($(this).attr('data'));
-        location.reload();
-      })
-
-      $('.link-ubah').click(async function() {
-        window.location.replace('ubah-absensi.html?docId=' + $(this).attr('data'));
-      })
-
-      $('#loader').hide();
-
-    });
+    tombolTambah.addEventListener('click', async function(e) {
+      e.preventDefault();
+      await tambahAbsensi(elemenTanggal.value, elemenNis.value, elemenNama.value, elemenAlamat.value, elemenNoTlpn.value, elemenKelas.value, elemenKeterangan.value);
+      window.location.href = 'index.html'
+    })
   </script>
 
-  <footer class="site-footer section-padding">
-
-    <div class="container">
-
-      <div class="row">
-        <div class="d-flex justify-content-center" class="col-12">
-          <h4 class="text-white mb-4 me-5">smk plus insan cemerlang</h4>
-        </div>
-
-        <div class="d-flex justify-content-center" class="col-12">
-          <h6 class="text-white mb-4 me-5">location</h6>
-        </div>
-
-        <div class="d-flex justify-content-center" class="col-12">
-          <p class="text-white mb-4 me-5">121 Teyvat, Gi</p>
-        </div>
-
-        <div class="d-flex justify-content-center">
-          <p class="mb-4 me6">smk plus insan cemerlang
-            <br>
-            aku: <a rel="nofollow" href="https://www.tooplate.com/" target="_blank">By:man</a>
-          </p>
-        </div>
-
-      </div>
-    </div>
-    </div>
-
-  </footer>
 </body>
+
+</html>
