@@ -11,7 +11,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <link href="css/tooplate.css" rel="stylesheet">
+   <link href="css/tooplate.css" rel="stylesheet">
 
 
 </head>
@@ -39,7 +39,7 @@
   </nav>
 
 
-  <table class="height: 100% min-height: 100vh" class="table" id="daftar-jadwalpelajaran">
+  <table class="height: 100% min-height: 100vh" class="table" id="daftar">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -93,7 +93,7 @@
     import { ambilDaftarjadwalpelajaran, formatAngka, hapusjadwalpelajaran } from './main.js';
 
     $(document).ready(async function() {
-      let elemenDaftar = $("#daftar-jadwalpelajaran > tbody");
+      let elemenDaftar = $("#daftar> tbody");
       let daftarjadwalpelajaran = await ambilDaftarjadwalpelajaran();
       let nomor = 1;
 

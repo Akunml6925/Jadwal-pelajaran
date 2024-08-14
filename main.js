@@ -28,7 +28,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export async function ambilDaftarjadwalpelajaran() {
-  const refDokumen = collection(db, "jadwalpelajaran");
+  const refDokumen = collection(db, "Jadwal-pelajaran");
   const kueri = query(refDokumen, orderBy("nama"));
   const cuplikanKueri = await getDocs(kueri);
 
@@ -57,7 +57,7 @@ export function formatAngka(x) {
 
 export async function tambahjadwalpelajaran(hari, jamke, waktu, kelass, matapelajaran,gurumapel) {
   try {
-    const dokRef = await addDoc(collection(db, 'absensi'), {
+    const dokRef = await addDoc(collection(db, 'Jadwal-pelajaran'), {
       hari: hari,
       jamke: jamke,
       waktu: waktu,
@@ -72,11 +72,11 @@ export async function tambahjadwalpelajaran(hari, jamke, waktu, kelass, matapela
 }
 
 export async function hapusjadwalpelajaran(docId) {
-  await deleteDoc(doc(db, "jadwalpelajaran", docId));
+  await deleteDoc(doc(db, "Jadwal-pelajaran", docId));
 }
 
 export async function ubahjadwalpelajaran(docId, hari, jamke, waktu, kelass, matapelajaran, gurumapel) {
-  await updateDoc(doc(db, "jadwalpelajaran", docId), {
+  await updateDoc(doc(db, "Jadwal-pelajaran", docId), {
     hari: hari,
     jamke: jamke,
     waktu: waktu,
@@ -87,7 +87,7 @@ export async function ubahjadwalpelajaran(docId, hari, jamke, waktu, kelass, mat
 }
 
 export async function ambiljadwalpelajaran(docId) {
-  const docRef = await doc(db, "jadwalpelajaran", docId);
+  const docRef = await doc(db, "Jadwal-pelajaran", docId);
   const docSnap = await getDoc(docRef);
 
   return await docSnap.data();
