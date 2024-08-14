@@ -93,17 +93,17 @@
     import { ambilDaftarjadwalpelajaran, formatAngka, hapusjadwalpelajaran } from './main.js';
 
     $(document).ready(async function() {
-      let elemenDaftar = $("#daftar> tbody");
+      let elemenDaftar = $("#daftar > tbody");
       let daftarjadwalpelajaran = await ambilDaftarjadwalpelajaran();
       let nomor = 1;
 
 
 
       daftarjadwalpelajaran.forEach((data) => {
-        elemenjadwalpelajaran.append(
+    elemenDaftar.append(
           '<tr>' +
           '<th>' + nomor + '</th>' +
-          '<td>' + data.haru + '</td>' +
+          '<td>' + data.hari + '</td>' +
           '<td>' + data.jamke + '</td>' +
           '<td>' + data.waktu + '</td>' +
           '<td>' + data.kelass + '</td>' +
